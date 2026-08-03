@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>YNA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "on-error":"#ffffff","on-secondary-fixed-variant":"#5b3b61","surface-tint":"#7c4e81","secondary":"#74537a",
+      "outline":"#7f747d","primary":"#441b4b","secondary-fixed":"#fcd6ff","error":"#ba1a1a",
+      "on-error-container":"#93000a","background":"#fff7fc","surface-container-high":"#eee6ec",
+      "outline-variant":"#d0c3cd","surface-container":"#f4ebf2","surface-container-low":"#faf1f8",
+      "surface":"#fff7fc","on-surface":"#1e1a1f","on-secondary":"#ffffff","on-surface-variant":"#4d444c",
+      "surface-container-lowest":"#ffffff","on-primary-container":"#d39dd6","on-primary":"#ffffff",
+      "on-secondary-container":"#77557c","error-container":"#ffdad6","secondary-container":"#facffd",
+      "primary-container":"#5d3263"
+    },
+    borderRadius: { DEFAULT:"0.25rem", lg:"0.5rem", xl:"0.75rem", full:"9999px" },
+    spacing: { gutter:"24px","container-max":"1280px",base:"8px","margin-desktop":"48px","margin-mobile":"16px" },
+    fontFamily: { "label-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"] },
+    fontSize: {
+      "label-md":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],
+      "label-sm":["12px",{lineHeight:"16px",fontWeight:"500"}],
+      "headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],
+      "headline-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],
+      "body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],
+      "body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],
+      "headline-lg-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}]
+    }
+  }}
+}
+</script>
+<style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;display:inline-block;line-height:1}
+.pb-safe{padding-bottom:env(safe-area-inset-bottom)}
+.timeline-line::before{content:'';position:absolute;left:20px;top:40px;bottom:-20px;width:2px;background-color:#E0D6E2}
+.timeline-item:last-child .timeline-line::before{display:none}
+.no-scrollbar::-webkit-scrollbar{display:none}
+.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+.active-pill{background-color:#441b4b;color:#fff}
+.nav-active { background-color: #facffd; color: #77557c; }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<header class="w-full top-0 sticky z-50 bg-surface flex justify-between items-center px-4 h-16 shadow-sm">
+  <div class="flex items-center gap-4">
+    <button onclick="window.location.href='tela9.html'" class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95">arrow_back</button>
+    <h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">YNA</h1>
+  </div>
+  <button onclick="window.location.href='tela11.html'" class="text-primary transition-all hover:bg-surface-container-high active:opacity-80 active:scale-95 p-2 rounded-full">
+    <span class="material-symbols-outlined">settings_accessibility</span>
+  </button>
+</header>
+
+<main class="max-w-container-max mx-auto px-4 md:px-margin-desktop pt-6 pb-32">
+  <section class="mb-8">
+    <h2 class="font-headline-md text-headline-md mb-4 text-primary relative">
+      <span class="material-symbols-outlined text-4xl mr-2 align-middle text-secondary-containerFill">history_edu</span>
+      Histórico de Saúde
+    </h2>
+
+    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2" id="category-chips">
+      <button data-cat="todos" class="cat-chip active-pill text-label-md font-label-md px-4 py-2 rounded-xl transition-all shadow-sm active:scale-95">Todos</button>
+      <button data-cat="receita" class="cat-chip bg-white border border-outline-variant text-on-surface-variant text-label-md font-label-md px-4 py-2 rounded-xl hover:bg-surface-container transition-all active:scale-95">Receitas</button>
+      <button data-cat="medicao" class="cat-chip bg-white border border-outline-variant text-on-surface-variant text-label-md font-label-md px-4 py-2 rounded-xl hover:bg-surface-container transition-all active:scale-95">Medições</button>
+      <button data-cat="vacina" class="cat-chip bg-white border border-outline-variant text-on-surface-variant text-label-md font-label-md px-4 py-2 rounded-xl hover:bg-surface-container transition-all active:scale-95">Vacinas</button>
+    </div>
+
+    <div class="flex gap-2 overflow-x-auto no-scrollbar mt-3" id="period-chips">
+      <button data-period="mes" class="period-chip active bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-3 py-1.5 rounded-full border border-secondary transition-all active-pill">Este mês</button>
+      <button data-period="trimestre" class="period-chip bg-surface-container text-on-surface-variant text-label-sm font-label-sm px-3 py-1.5 rounded-full hover:bg-surface-container-high transition-all">Último trimestre</button>
+      <button data-period="ano" class="period-chip bg-surface-container text-on-surface-variant text-label-sm font-label-sm px-3 py-1.5 rounded-full hover:bg-surface-container-high transition-all">Este ano</button>
+    </div>
+  </section>
+
+  <section class="space-y-6" id="timeline">
+    <div id="empty-history" class="flex flex-col items-center text-center gap-4 py-16 px-6">
+      <div class="w-20 h-20 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+        <span class="material-symbols-outlined text-4xl">history_edu</span>
+      </div>
+      <div>
+        <h4 class="text-headline-md font-bold text-primary mb-1">Nenhum histórico registrado</h4>
+        <p class="text-body-md text-on-surface-variant max-w-sm">Assim que você tiver receitas, medições ou vacinas registradas, elas aparecerão aqui.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER PADRONIZADO (Baseado na Tela 4) -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center px-2 pb-safe h-16 bg-surface-container-lowest border-t border-outline-variant shadow-lg rounded-t-xl pb-safe">
+  <button data-nav="home" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">home</span><span class="font-label-sm text-[10px]">Início</span>
+  </button>
+  <button data-nav="meds" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">pill</span><span class="font-label-sm text-[10px]">Remédios</span>
+  </button>
+  <button data-nav="scan" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">document_scanner</span><span class="font-label-sm text-[10px]">Escanear</span>
+  </button>
+  <button data-nav="alerts" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">notifications</span><span class="font-label-sm text-[10px]">Alertas</span>
+  </button>
+
+  <!-- Histórico ativo nesta tela -->
+  <button data-nav="history" class="nav-item nav-active flex flex-1 flex-col items-center justify-center py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">history_edu</span><span class="font-label-sm text-[10px]">Histórico</span>
+  </button>
+  <button data-nav="map" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">distance</span><span class="font-label-sm text-[10px]">Mapa</span>
+  </button>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const categoryChips = document.querySelectorAll('#category-chips .cat-chip');
+    const periodChips = document.querySelectorAll('#period-chips .period-chip');
+    const timelineItems = document.querySelectorAll('#timeline .timeline-item');
+
+    let activeCategory = 'todos';
+    let activePeriod = 'mes';
+
+    function filterTimeline() {
+        // Histórico vazio: não há itens de timeline para filtrar,
+        // o estado vazio (#empty-history) permanece sempre visível.
+        timelineItems.forEach(item => {
+            const itemCategory = item.dataset.cat;
+            const itemPeriod = item.dataset.period;
+
+            const categoryMatch = activeCategory === 'todos' || itemCategory === activeCategory;
+            const periodMatch = activePeriod === 'todos' || itemPeriod === activePeriod;
+
+            if (categoryMatch && periodMatch) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    categoryChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            categoryChips.forEach(c => c.classList.remove('active-pill'));
+            categoryChips.forEach(c => c.classList.add('bg-white', 'text-on-surface-variant', 'border', 'border-outline-variant'));
+            
+            chip.classList.add('active-pill');
+            chip.classList.remove('bg-white', 'text-on-surface-variant', 'border', 'border-outline-variant');
+
+            activeCategory = chip.dataset.cat;
+            filterTimeline();
+        });
+    });
+
+    periodChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            periodChips.forEach(c => c.classList.remove('active-pill', 'bg-secondary-container', 'text-on-secondary-container', 'border', 'border-secondary'));
+            periodChips.forEach(c => c.classList.add('bg-surface-container', 'text-on-surface-variant'));
+            
+            chip.classList.add('active-pill', 'bg-secondary-container', 'text-on-secondary-container', 'border', 'border-secondary');
+            chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+
+            activePeriod = chip.dataset.period;
+            filterTimeline();
+        });
+    });
+
+    filterTimeline();
+
+    const navLinks = { 
+        home: 'tela11.html', 
+        meds: 'tela4.html', 
+        scan: 'tela6.html', 
+        alerts: 'tela7.html', 
+        history: 'tela10.html', 
+        map: 'tela9.html' 
+    };
+
+    document.querySelectorAll('#bottom-nav .nav-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('#bottom-nav .nav-item').forEach(b => {
+                b.classList.remove('nav-active');
+                b.classList.add('text-on-surface-variant');
+            });
+            btn.classList.add('nav-active');
+            btn.classList.remove('text-on-surface-variant');
+            
+            const target = navLinks[btn.dataset.nav];
+            if (target) window.location.href = target;
+        });
+    });
+});
+</script>
+</body></html>
