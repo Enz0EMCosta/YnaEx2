@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>YNA</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "primary":"#441b4b","primary-container":"#5d3263","primary-fixed-dim":"#ecb4ef",
+      "secondary-fixed":"#fcd6ff","surface-tint":"#7c4e81"
+    },
+    spacing: { "container-padding":"24px","stack-sm":"8px","stack-md":"16px","stack-lg":"32px" },
+    fontFamily: { "headline-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"] },
+    fontSize: { "headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"label-sm":["12px",{lineHeight:"16px",fontWeight:"500"}],"label-md":["14px",{lineHeight:"20px",fontWeight:"600"}] }
+  }}
+}
+</script>
+<style>
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.float-animation{animation:float 4s ease-in-out infinite}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.glass-effect{background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden">
+<main class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0 bg-gradient-to-br from-primary-container via-primary to-surface-tint">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary-container rounded-full blur-[120px] opacity-20 animate-pulse"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-primary-fixed-dim rounded-full blur-[150px] opacity-15"></div>
+  </div>
+
+  <div class="relative z-10 flex flex-col items-center px-container-padding text-center max-w-lg">
+    <div class="float-animation mb-stack-lg">
+      <div class="p-stack-md bg-white/10 rounded-xl glass-effect shadow-2xl border border-white/20">
+        <img alt="YNA Logo" class="w-32 h-32 object-contain drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-8x-dWSFOnTCyAnJT6vw4u2GgbW8qbXej4Eudv3XeXVdo843gR2piHSS54msUHmrWY5W_aTSac-q4fz0UuBlcUqlIlxE6Q1mR5MFrtmtUGRoF3iCpSav5jy7UhsV6wb9lS-jV1rZYFST1werizMwVKUpRQoGugEHNYJvuW4OFxN6NkWMS3-94dN1CclYH3MDsRDPmJ6rvpYVKXODsejdvzQM5iL0FYlD5qSlY6laH2j_8WhdI4HLWkZ8oX_QcvVLjfAISyLTb6CA">
+      </div>
+    </div>
+
+    <p class="font-headline-md text-headline-md text-primary-fixed-dim font-medium leading-tight max-w-[280px] mx-auto opacity-95">
+      Plataforma Inteligente de Segurança Farmacoterapêutica
+    </p>
+
+    <div class="mt-12 w-full max-w-[320px] space-y-6">
+      <!-- Formulário de Login Adicionado -->
+      <form id="login-form" class="space-y-4">
+        <div class="space-y-2 text-left">
+          <label class="text-white/80 text-label-sm uppercase tracking-wider ml-1">Email</label>
+          <input id="email" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-secondary-fixed transition-all" placeholder="exemplo@email.com" type="email">
+        </div>
+        <div class="space-y-2 text-left">
+          <label class="text-white/80 text-label-sm uppercase tracking-wider ml-1">Senha</label>
+          <input id="senha" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-secondary-fixed transition-all" placeholder="********" type="password">
+        </div>
+        <!-- Botão Entrar (sem funcionalidade conforme pedido) -->
+        <button id="entrar-btn" class="w-full py-4 bg-secondary-fixed text-primary font-medium rounded-xl shadow-lg hover:bg-primary-fixed transition-all active:scale-[0.98]" type="button">
+          Entrar
+        </button>
+      </form>
+
+      <div class="text-center">
+        <button id="cadastrar-btn" class="text-white/80 text-label-md hover:text-white transition-colors">
+          Não tem conta? <span class="font-medium text-secondary-fixed">Cadastre-se</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-12 left-0 right-0 flex flex-col items-center">
+    <div class="flex items-center space-x-2 text-white/60 font-label-sm text-label-sm uppercase tracking-widest">
+      <span>Precisão</span><span class="w-1 h-1 bg-white/30 rounded-full"></span>
+      <span>Cuidado</span><span class="w-1 h-1 bg-white/30 rounded-full"></span>
+      <span>Segurança</span>
+    </div>
+  </div>
+</main>
+
+<script>
+  // Mantida a funcionalidade de ir para tela2.html ao clicar em Cadastre-se
+  document.getElementById('cadastrar-btn').addEventListener('click', function() {
+    window.location.href = 'tela2.html';
+  });
+</script>
+</body></html>
