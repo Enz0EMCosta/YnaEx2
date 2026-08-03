@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>YNA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "surface-container-highest":"#e8e0e7","error":"#ba1a1a","surface-variant":"#e8e0e7",
+      "on-surface":"#1e1a1f","surface-tint":"#7c4e81","surface-container-lowest":"#ffffff",
+      "error-container":"#ffdad6","secondary-container":"#facffd","on-surface-variant":"#4d444c",
+      "background":"#fff7fc","secondary":"#74537a","primary-container":"#5d3263",
+      "surface":"#fff7fc","outline-variant":"#d0c3cd","on-error":"#ffffff",
+      "on-secondary-container":"#77557c","on-primary":"#ffffff","surface-container":"#f4ebf2",
+      "surface-container-high":"#eee6ec","primary":"#441b4b","outline":"#7f747d",
+      "on-error-container":"#93000a","on-primary-container":"#d39dd6"
+    },
+    borderRadius: { DEFAULT:"0.25rem", lg:"0.5rem", xl:"0.75rem", full:"9999px" },
+    spacing: { base:"8px","margin-desktop":"48px","margin-mobile":"16px",gutter:"24px" },
+    fontFamily: { "headline-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"] },
+    fontSize: {
+      "headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],
+      "label-sm":["12px",{lineHeight:"16px",fontWeight:"500"}],
+      "body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],
+      "headline-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],
+      "body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],
+      "headline-lg-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],
+      "label-md":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}]
+    }
+  }}
+}
+</script>
+<style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.glass-card{background:rgba(255,255,255,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.custom-shadow{box-shadow:0 20px 40px -10px rgba(68,27,75,0.08)}
+.focus-ring:focus-within{outline:2px solid #441b4b;outline-offset:2px}
+body{min-height:max(884px,100dvh);background-color:#fff7fc;color:#1e1a1f}
+.tonal-shadow{box-shadow:0 10px 25px -8px rgba(68,27,75,0.12)}
+.nav-active{background-color:#facffd;color:#77557c}
+</style>
+</head>
+<body class="font-body-md text-on-surface pb-32">
+
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base bg-surface shadow-sm h-16">
+  <div class="flex items-center gap-3">
+    <img alt="YNA Pharma" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL9q9LzamP5vW1HPifH5d9nbfQfKa8DI4wXgZ2kkUaw8DxW1bK8LgWfiQcPTmKxCh5p7QgfXz3AgZ0HCalRsyw3g_GmaVv_Kc9AXk2gF47_QEoRo8AHBPYSkSP1chexVIvccL-TP_s_v3NsvUO5YCJC2f9jZyJjdZTILrl6tk_F_4PSrel5Q-V5TdEDYDnXkrnhml9vTeY_van_zkTmoTxHc34Mg7vqQkscLEFpCND5HgjeIdGlmxNXxcSxzp0aCjYqfsHis1vL_Y33g">
+    <h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">YNA&nbsp;</h1>
+  </div>
+  <div class="flex items-center gap-4">
+    <button onclick="window.location.href='tela4.html'" class="p-2 rounded-full hover:bg-surface-container-high transition-colors active:scale-95">
+      <span class="material-symbols-outlined text-on-surface-variant">close</span>
+    </button>
+  </div>
+</header>
+
+<main class="pt-24 pb-16 px-margin-mobile max-w-screen-md mx-auto">
+  <section class="mb-gutter">
+    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Olá, Paciente Teste!</h2>
+    <p class="font-body-lg text-body-lg text-on-surface-variant">Personalize sua jornada de cuidado.</p>
+  </section>
+
+  <div class="space-y-gutter">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-base">
+      <div class="bg-surface-container-lowest p-gutter rounded-lg border border-outline-variant custom-shadow flex flex-col gap-2 focus-ring">
+        <label class="font-label-md text-label-md text-on-surface-variant px-1">Nome completo</label>
+        <input class="w-full bg-transparent border-none focus:ring-0 text-body-lg placeholder:text-outline p-0 h-10" value="Paciente Teste" type="text">
+      </div>
+      <div class="bg-surface-container-lowest p-gutter rounded-lg border border-outline-variant custom-shadow flex flex-col gap-2 focus-ring">
+        <label class="font-label-md text-label-md text-on-surface-variant px-1">Idade</label>
+        <input class="w-full bg-transparent border-none focus:ring-0 text-body-lg placeholder:text-outline p-0 h-10" value="40" type="number">
+      </div>
+      
+      </div>
+      <div class="bg-surface-container-lowest p-gutter rounded-lg border border-outline-variant custom-shadow flex flex-col gap-2 focus-ring">
+        <label class="font-label-md text-label-md text-on-surface-variant px-1">Peso (kg)</label>
+        <input class="w-full bg-transparent border-none focus:ring-0 text-body-lg placeholder:text-outline p-0 h-10" value="84" type="number">
+      </div>
+      
+    </div>
+
+    <div class="bg-primary-container/10 p-gutter rounded-xl border border-primary-container/20 flex items-center justify-between gap-4 relative z-10">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center relative z-10">
+          <span class="material-symbols-outlined text-on-primary">visibility</span>
+        </div>
+        <div>
+          <h4 class="font-headline-md text-headline-md text-primary leading-tight">Limitações visuais/cognitivas</h4>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">Ativar interface simplificada e alto contraste</p>
+        </div>
+      </div>
+      <label class="relative inline-flex items-center cursor-pointer z-20">
+        <input class="sr-only peer" id="accessibility-toggle" type="checkbox" checked>
+        <div class="w-14 h-8 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+      </label>
+    </div>
+
+    <!-- COMORBIDADES: nenhuma pré-selecionada para o paciente Teste -->
+    <section>
+      <div class="flex items-center justify-between mb-4 px-1">
+        <h3 class="font-headline-md text-headline-md text-primary">Comorbidades</h3>
+        <span class="text-label-sm text-outline px-2 py-1 bg-surface-container rounded-full">Selecione todas que se aplicam</span>
+      </div>
+      <p class="text-body-md text-on-surface-variant px-1 mb-4">Essas informações nos ajudam a personalizar alertas de interação medicamentosa.</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-base" id="comorbidities-grid">
+        <button class="group flex flex-col items-center justify-center p-base bg-surface-container-lowest border border-outline-variant rounded-xl transition-all hover:border-primary active:scale-95" onclick="toggleCard(this)">
+          <span class="material-symbols-outlined text-primary mb-2 text-3xl">respiratory_rate</span>
+          <span class="font-label-md text-label-md text-on-surface-variant">Asma</span>
+        </button>
+        <button class="group flex flex-col items-center justify-center p-base border rounded-xl transition-all hover:border-primary active:scale-95 bg-primary-container border-primary" onclick="toggleCard(this)">
+  <span class="material-symbols-outlined mb-2 text-3xl text-on-primary-container">cardiology</span>
+  <span class="font-label-md text-label-md text-on-primary-container">Hipertensão</span>
+</button>
+        <button class="group flex flex-col items-center justify-center p-base bg-surface-container-lowest border border-outline-variant rounded-xl transition-all hover:border-primary active:scale-95" onclick="toggleCard(this)">
+          <span class="material-symbols-outlined text-primary mb-2 text-3xl">bloodtype</span>
+          <span class="font-label-md text-label-md text-on-surface-variant">Diabetes</span>
+        </button>
+        <button class="group flex flex-col items-center justify-center p-base bg-surface-container-lowest border border-outline-variant rounded-xl transition-all hover:border-primary active:scale-95" onclick="toggleCard(this)">
+          <span class="material-symbols-outlined text-primary mb-2 text-3xl">psychiatry</span>
+          <span class="font-label-md text-label-md text-on-surface-variant">Depressão</span>
+        </button>
+        <button class="group flex flex-col items-center justify-center p-base bg-surface-container-lowest border border-outline-variant rounded-xl transition-all hover:border-primary active:scale-95" onclick="toggleCard(this)">
+          <span class="material-symbols-outlined text-primary mb-2 text-3xl">fitness_center</span>
+          <span class="font-label-md text-label-md text-on-surface-variant">Obesidade</span>
+        </button>
+        <button class="group flex flex-col items-center justify-center p-base bg-surface-container-lowest border border-outline-variant rounded-xl transition-all hover:border-primary active:scale-95" onclick="toggleCard(this)">
+          <span class="material-symbols-outlined text-primary mb-2 text-3xl">bloodtype</span>
+          <span class="font-label-md text-label-md text-on-surface-variant">Colesterol</span>
+        </button>
+
+        <div id="custom-comorbidity-wrapper" class="hidden">
+          <input id="custom-comorbidity-input" type="text" placeholder="Digite e pressione Enter" onkeydown="commitCustomComorbidity(event)" onblur="cancelCustomComorbidity()" class="w-full h-full min-h-[88px] p-base bg-surface-container-lowest border-2 border-primary rounded-xl text-label-md text-on-surface text-center focus:outline-none focus:ring-0 placeholder:text-outline">
+        </div>
+        <button id="outras-btn" class="group flex flex-col items-center justify-center p-base bg-surface-variant/30 border border-dashed border-outline-variant rounded-xl transition-all hover:bg-surface-variant active:scale-95" onclick="activateOutrasInput()">
+          <span class="material-symbols-outlined text-outline mb-2 text-3xl">add_circle</span>
+          <span class="font-label-md text-label-md text-outline">Outras</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ALERGIAS: nenhuma pré-selecionada para o paciente Teste -->
+    <section>
+      <div class="flex items-center justify-between mb-4 px-1">
+        <h3 class="font-headline-md text-headline-md text-primary">Cadastro de Alergias</h3>
+        <span class="text-label-sm text-outline px-2 py-1 bg-surface-container rounded-full">Selecione todas que se aplicam</span>
+      </div>
+      <p class="text-body-md text-on-surface-variant px-1 mb-4">Se você possui alergia a medicamentos ou substâncias, cadastre aqui para alertas de segurança.</p>
+      <div class="relative focus-ring bg-surface-container-lowest rounded-xl border border-outline-variant custom-shadow p-2">
+        <div class="flex items-center gap-3 px-2">
+          <span class="material-symbols-outlined text-primary">search</span>
+          <input class="w-full bg-transparent border-none focus:ring-0 text-body-md py-4" placeholder="Procure por medicamentos, alimentos ou substâncias..." type="text" oninput="filterAllergies(this.value)">
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-base mt-4" id="allergy-options"></div>
+      <div class="flex flex-wrap gap-2 mt-4" id="selected-allergies"></div>
+    </section>
+
+    <section>
+      <h3 class="font-headline-md text-headline-md text-primary mb-4 px-1">Localização</h3>
+      <div class="rounded-xl overflow-hidden border border-outline-variant custom-shadow aspect-video relative group cursor-pointer bg-[#311337]">
+
+        <!-- Link clicável para Google Maps -->
+        <a id="maps-search-link"
+           href="https://www.google.com/maps/search/UBS+farmacia+hospital+CAPS+proximos+Aracaju+SE"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="absolute inset-0 z-10"
+           title="Clique para abrir no Google Maps">
+        </a>
+
+        <!-- Ilustração SVG do Mapa (Design de cidade/vias em tons de roxo) -->
+        <svg class="w-full h-full object-cover opacity-85" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="800" height="450" fill="#2d1233"/>
+          <path d="M0 0H800V450H0V0Z" fill="#35163d"/>
+          <rect x="40" y="30" width="180" height="120" rx="12" fill="#401a4a" opacity="0.6"/>
+          <rect x="250" y="40" width="220" height="90" rx="12" fill="#401a4a" opacity="0.6"/>
+          <rect x="500" y="20" width="260" height="140" rx="12" fill="#401a4a" opacity="0.6"/>
+          <rect x="60" y="180" width="140" height="160" rx="12" fill="#401a4a" opacity="0.6"/>
+          <rect x="230" y="160" width="180" height="110" rx="12" fill="#401a4a" opacity="0.6"/>
+          <rect x="440" y="190" width="160" height="130" rx="12" fill="#401a4a" opacity="0.6"/>
+          <rect x="630" y="180" width="140" height="220" rx="12" fill="#401a4a" opacity="0.6"/>
+          <path d="M-20 380 C 200 390, 300 320, 500 360 C 650 390, 750 310, 820 330 L 820 470 L -20 470 Z" fill="#220b27" opacity="0.8"/>
+          <path d="M -10 160 L 810 160" stroke="#5d2c68" stroke-width="14"/>
+          <path d="M -10 300 L 810 300" stroke="#5d2c68" stroke-width="10"/>
+          <path d="M 220 -10 L 220 460" stroke="#5d2c68" stroke-width="12"/>
+          <path d="M 420 -10 L 420 460" stroke="#5d2c68" stroke-width="14"/>
+          <path d="M 610 -10 L 610 460" stroke="#5d2c68" stroke-width="8"/>
+          <path d="M -10 80 L 810 80" stroke="#482152" stroke-width="4" stroke-dasharray="8 8"/>
+          <path d="M -10 230 L 810 230" stroke="#482152" stroke-width="4"/>
+          <path d="M 120 -10 L 120 460" stroke="#482152" stroke-width="4"/>
+          <path d="M 320 -10 L 320 460" stroke="#482152" stroke-width="4" stroke-dasharray="6 6"/>
+          <path d="M 520 -10 L 520 460" stroke="#482152" stroke-width="4"/>
+          <text x="235" y="150" fill="#a97db0" font-size="11" font-family="sans-serif" font-weight="600" opacity="0.7">Av. Principal</text>
+          <text x="435" y="80" fill="#a97db0" font-size="10" font-family="sans-serif" opacity="0.5">Rua das Flores</text>
+          <text x="45" y="290" fill="#a97db0" font-size="10" font-family="sans-serif" opacity="0.5">Centro</text>
+        </svg>
+
+        <!-- Pins e Marcadores Flutuantes -->
+        <div class="absolute inset-0 pointer-events-none z-10">
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center animate-bounce">
+            <div class="w-10 h-10 rounded-full bg-secondary/40 flex items-center justify-center animate-ping absolute"></div>
+            <span class="material-symbols-outlined text-4xl text-secondary drop-shadow-lg relative">location_on</span>
+          </div>
+          <div class="absolute top-1/3 left-1/3 -translate-x-1/2 flex items-center gap-1.5 bg-surface-container-lowest/95 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-label-md text-primary shadow-md border border-outline-variant/30">
+            <span class="material-symbols-outlined text-sm text-primary">local_hospital</span>
+            <span>UBS</span>
+          </div>
+          <div class="absolute bottom-1/3 right-1/4 translate-x-1/2 flex items-center gap-1.5 bg-surface-container-lowest/95 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-label-md text-primary shadow-md border border-outline-variant/30">
+            <span class="material-symbols-outlined text-sm text-primary">medication</span>
+            <span>Farmácia</span>
+          </div>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none z-10"></div>
+
+        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between glass-card p-3.5 rounded-xl z-20 pointer-events-auto border border-white/40 shadow-lg">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-xl">my_location</span>
+            </div>
+            <div>
+              <p class="font-label-md text-primary font-bold text-sm" id="current-location-text">Aracaju, SE</p>
+              <p class="text-xs text-on-surface-variant">Sua localização para detectar unidades de saúde próximas.</p>
+            </div>
+          </div>
+
+          <button type="button"
+                  onclick="changeLocation()"
+                  class="flex items-center gap-1 text-xs font-label-md bg-primary text-on-primary px-3.5 py-2 rounded-lg hover:bg-primary-container transition-all active:scale-95 shadow-sm">
+            <span class="material-symbols-outlined text-sm">edit_location</span>
+            <span>Alterar</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="pt-2">
+      <div class="flex items-center justify-center gap-2 mb-4 text-on-surface-variant opacity-80">
+        <span class="material-symbols-outlined text-sm">verified_user</span>
+        <span class="text-xs font-label-sm">Seus dados estão protegidos pela LGPD e criptografia de ponta a ponta.</span>
+      </div>
+      <button class="w-full bg-secondary text-on-primary h-14 md:h-16 rounded-xl font-headline-md text-headline-md flex items-center justify-center gap-3 shadow-lg active:scale-95 transition-all hover:bg-primary-container" id="main-action">
+        <span class="material-symbols-outlined">tune</span>
+        <span>Configurar experiência</span>
+      </button>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER PADRÃO (Baseado na Tela 4) -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center px-2 pb-safe h-16 bg-surface-container-lowest border-t border-outline-variant shadow-lg rounded-t-xl pb-safe">
+  <button data-nav="home" class="nav-item nav-active flex flex-1 flex-col items-center justify-center py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">home</span><span class="font-label-sm text-[10px]">Início</span>
+  </button>
+  <button data-nav="meds" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">pill</span><span class="font-label-sm text-[10px]">Remédios</span>
+  </button>
+  <button data-nav="scan" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">document_scanner</span><span class="font-label-sm text-[10px]">Escanear</span>
+  </button>
+  <button data-nav="alerts" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">notifications</span><span class="font-label-sm text-[10px]">Alertas</span>
+  </button>
+  <button data-nav="history" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">history_edu</span><span class="font-label-sm text-[10px]">Histórico</span>
+  </button>
+  <button data-nav="map" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined hover:font-variation-settings-['FILL'1]">distance</span><span class="font-label-sm text-[10px]">Mapa</span>
+  </button>
+</nav>
+
+<script>
+function toggleCard(element) {
+  const isSelected = element.classList.contains('bg-primary-container');
+  const icon = element.querySelector('.material-symbols-outlined');
+  const label = element.querySelector('span:last-child');
+  if (isSelected) {
+    element.classList.remove('bg-primary-container', 'border-primary');
+    element.classList.add('bg-surface-container-lowest', 'border-outline-variant');
+    icon.classList.remove('text-on-primary-container'); icon.classList.add('text-primary');
+    label.classList.remove('text-on-primary-container'); label.classList.add('text-on-surface-variant');
+  } else {
+    element.classList.remove('bg-surface-container-lowest', 'border-outline-variant');
+    element.classList.add('bg-primary-container', 'border-primary');
+    icon.classList.remove('text-primary'); icon.classList.add('text-on-primary-container');
+    label.classList.remove('text-on-surface-variant'); label.classList.add('text-on-primary-container');
+  }
+}
+function selectSex(element) {
+  const buttons = element.parentElement.querySelectorAll('button');
+  buttons.forEach(btn => {
+    btn.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+    btn.classList.add('bg-surface', 'text-on-surface-variant', 'border-outline-variant');
+  });
+  element.classList.remove('bg-surface', 'text-on-surface-variant', 'border-outline-variant');
+  element.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+}
+
+const accessibilityToggle = document.getElementById('accessibility-toggle');
+// Aplica o alto contraste já no carregamento, refletindo o estado inicial marcado do toggle.
+document.body.classList.toggle('contrast-125', accessibilityToggle.checked);
+accessibilityToggle.addEventListener('change', function() {
+  document.body.classList.toggle('contrast-125', this.checked);
+});
+
+/* ===== Comorbidade "Outras" (padrão antigo) ===== */
+function activateOutrasInput() {
+  document.getElementById('outras-btn').classList.add('hidden');
+  const wrapper = document.getElementById('custom-comorbidity-wrapper');
+  wrapper.classList.remove('hidden');
+  const input = document.getElementById('custom-comorbidity-input');
+  input.value = '';
+  input.focus();
+}
+function cancelCustomComorbidity() {
+  setTimeout(() => {
+    document.getElementById('custom-comorbidity-wrapper').classList.add('hidden');
+    document.getElementById('outras-btn').classList.remove('hidden');
+  }, 150);
+}
+function commitCustomComorbidity(event) {
+  if (event.key !== 'Enter') return;
+  event.preventDefault();
+  const input = event.target;
+  const value = input.value.trim();
+  if (value) addCustomComorbidityCard(value);
+  input.value = '';
+  document.getElementById('custom-comorbidity-wrapper').classList.add('hidden');
+  document.getElementById('outras-btn').classList.remove('hidden');
+}
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+function addCustomComorbidityCard(text) {
+  const grid = document.getElementById('comorbidities-grid');
+  const outrasBtn = document.getElementById('outras-btn');
+  const card = document.createElement('div');
+  card.className = 'relative group flex flex-col items-center justify-center p-base bg-primary-container border border-primary rounded-xl active:scale-95 transition-all';
+  card.innerHTML = `
+    <button type="button" class="absolute top-1 right-1 w-5 h-5 flex items-center justify-center rounded-full bg-black/10 hover:bg-black/20" onclick="event.stopPropagation(); this.closest('.group').remove()" aria-label="Remover comorbidade">
+      <span class="material-symbols-outlined text-on-primary-container" style="font-size:14px;">close</span>
+    </button>
+    <span class="material-symbols-outlined text-on-primary-container mb-2 text-3xl">sick</span>
+    <span class="font-label-md text-label-md text-on-primary-container text-center px-2">${escapeHtml(text)}</span>
+  `;
+  grid.insertBefore(card, outrasBtn);
+}
+
+/* ===== Alergias (padrão antigo: grade + busca + tags) — nenhuma pré-selecionada ===== */
+const allergyOptions = ['Penicilina', 'AINES', 'Dipirona', 'Lactose', 'Glúten', 'Corantes alimentares', 'Contraste'];
+const selectedAllergies = new Set();
+
+function renderAllergyOptions() {
+  const container = document.getElementById('allergy-options');
+  container.innerHTML = allergyOptions.map(name => {
+    const isSelected = selectedAllergies.has(name);
+    const stateClasses = isSelected
+      ? 'bg-error-container border-error-container text-on-error-container'
+      : 'bg-surface-container-lowest border-outline-variant text-on-surface-variant hover:border-error';
+    return `<button type="button" data-allergy="${escapeHtml(name)}" onclick="toggleAllergy('${name.replace(/'/g, "\\'")}')" class="px-3 py-3 rounded-lg border text-label-md font-label-md transition-all active:scale-95 text-center ${stateClasses}">${escapeHtml(name)}</button>`;
+  }).join('');
+}
+function renderSelectedAllergies() {
+  const container = document.getElementById('selected-allergies');
+  if (selectedAllergies.size === 0) {
+    container.innerHTML = '<span class="text-label-sm text-outline px-1">Nenhuma alergia selecionada</span>';
+    return;
+  }
+  container.innerHTML = Array.from(selectedAllergies).map(name => `
+    <span class="bg-error-container text-on-error-container font-label-md py-2 px-4 rounded-full flex items-center gap-2">
+      ${escapeHtml(name)}
+      <span class="material-symbols-outlined text-sm cursor-pointer" onclick="toggleAllergy('${name.replace(/'/g, "\\'")}')">close</span>
+    </span>
+  `).join('');
+}
+function toggleAllergy(name) {
+  if (selectedAllergies.has(name)) selectedAllergies.delete(name);
+  else selectedAllergies.add(name);
+  renderAllergyOptions();
+  renderSelectedAllergies();
+}
+function filterAllergies(query) {
+  const q = query.trim().toLowerCase();
+  document.querySelectorAll('#allergy-options button').forEach(btn => {
+    const name = btn.dataset.allergy.toLowerCase();
+    btn.style.display = name.includes(q) ? '' : 'none';
+  });
+}
+renderAllergyOptions();
+renderSelectedAllergies();
+
+/* ===== Alterar Localização Manualmente ===== */
+function changeLocation() {
+  const newLocation = prompt("Digite sua nova cidade, bairro ou CEP:", "Aracaju, SE");
+  if (newLocation && newLocation.trim() !== "") {
+    const locationName = newLocation.trim();
+    document.getElementById('current-location-text').innerText = locationName;
+
+    const mapsLink = document.getElementById('maps-search-link');
+    if (mapsLink) {
+      const searchUrl = `https://www.google.com/maps/search/UBS+farmacia+hospital+CAPS+proximos+${encodeURIComponent(locationName)}`;
+      mapsLink.setAttribute('href', searchUrl);
+    }
+  }
+}
+
+/* ===== Botão Configurar Experiência ===== */
+const mainAction = document.getElementById('main-action');
+mainAction.addEventListener('click', () => {
+  mainAction.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span><span>Configurando...</span>';
+  setTimeout(() => {
+    mainAction.innerHTML = '<span class="material-symbols-outlined">check_circle</span><span>Configurado com sucesso!</span>';
+    mainAction.classList.replace('bg-secondary', 'bg-primary-container');
+    setTimeout(() => { window.location.href = 'tela4.html'; }, 900);
+  }, 1200);
+});
+
+/* ===== SCRIPT DE NAVEGAÇÃO PADRÃO ===== */
+const navLinks = { 
+    home: 'tela11.html',
+    meds: 'tela4.html', 
+    scan: 'tela6.html', 
+    alerts: 'tela7.html', 
+    history: 'tela10.html', 
+    map: 'tela9.html' 
+};
+
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(b => {
+      b.classList.remove('nav-active');
+      b.classList.add('text-on-surface-variant');
+    });
+    btn.classList.add('nav-active');
+    btn.classList.remove('text-on-surface-variant');
+    
+    const target = navLinks[btn.dataset.nav];
+    if (target) window.location.href = target;
+  });
+});
+</script>
+</body></html>
