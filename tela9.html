@@ -1,0 +1,317 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>YNA </title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "error":"#ba1a1a","secondary-container":"#facffd","on-surface-variant":"#4d444c","background":"#fff7fc",
+      "on-primary-container":"#d39dd6","surface":"#fff7fc","surface-container":"#f4ebf2","secondary":"#74537a",
+      "primary-container":"#5d3263","surface-container-lowest":"#ffffff","primary":"#441b4b","outline":"#7f747d",
+      "surface-container-high":"#eee6ec","tertiary-fixed":"#e7e1e3","on-tertiary-fixed":"#1d1b1d",
+      "tertiary":"#2e2c2e","on-tertiary-container":"#b3aeb0","on-secondary-container":"#77557c",
+      "primary-fixed-dim":"#ecb4ef","secondary-fixed":"#fcd6ff","outline-variant":"#d0c3cd",
+      "on-primary":"#ffffff","tertiary-fixed-dim":"#cac5c7"
+    },
+    borderRadius: { DEFAULT:"0.5rem", lg:"0.5rem", xl:"0.75rem", full:"9999px" },
+    spacing: { base:"8px","margin-desktop":"48px","margin-mobile":"16px",gutter:"24px","stack-sm":"8px","stack-md":"16px","stack-lg":"32px","container-padding":"24px" },
+    fontFamily: { "headline-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"] },
+    fontSize: {
+      "headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],
+      "label-sm":["12px",{lineHeight:"16px",fontWeight:"500"}],
+      "body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],
+      "headline-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],
+      "body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],
+      "headline-lg-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],
+      "label-md":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}]
+    }
+  }}
+}
+</script>
+<style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.fill-icon{font-variation-settings:'FILL' 1}
+.hide-scrollbar::-webkit-scrollbar{display:none}
+.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+.glass-card{background:rgba(255,247,252,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.map-shadow{box-shadow:0 4px 24px -1px rgba(68,27,75,0.08)}
+.active-pill{background-color:#441b4b;color:#fff}
+.pb-safe{padding-bottom:env(safe-area-inset-bottom)}
+body{min-height:100dvh}
+.nav-active { background-color: #facffd; color: #77557c; }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed-dim pb-24">
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface shadow-sm">
+  <div class="flex items-center gap-base">
+    <button onclick="window.location.href='tela7.html'" class="p-1 rounded-full hover:bg-surface-container-high transition-colors active:scale-95">
+      <span class="material-symbols-outlined text-primary">arrow_back</span>
+    </button>
+    <h1 class="font-headline-md text-headline-md font-bold text-primary">YNA</h1>
+  </div>
+  <div class="cursor-pointer active:opacity-80 hover:bg-surface-container-high transition-colors p-2 rounded-full" onclick="window.location.href='tela11.html'">
+    <span class="material-symbols-outlined text-on-surface-variant">settings</span>
+  </div>
+</header>
+
+<main class="pt-16 min-h-screen max-w-screen-xl mx-auto">
+  <section class="px-container-padding py-stack-lg">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
+      <div>
+        <span class="text-label-md font-label-md text-secondary uppercase tracking-widest">Ecossistema de Cuidado</span>
+        <h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-primary mt-1">Equidade Territorial</h2>
+        <p class="text-on-surface-variant max-w-lg mt-2">Disponibilidade Regional: Adaptamos as sugestões para o seu contexto atual (<span class="font-bold text-primary" id="contexto-atual">Urbano</span>). Encontramos <span id="qtd-unidades">4</span> unidades de saúde com foco em equidade de acesso.</p>
+      </div>
+      <div class="flex p-1 bg-surface-container rounded-full w-fit">
+        <button data-context="urbano" class="context-btn px-6 py-2 rounded-full font-label-md transition-all active-pill" id="urbanBtn">Urbano</button>
+        <button data-context="rural" class="context-btn px-6 py-2 rounded-full font-label-md transition-all text-on-surface-variant" id="ruralBtn">Rural</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-container-padding pb-stack-md">
+    <div class="flex flex-col gap-stack-md">
+      <div class="relative group">
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+        <input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm" placeholder="Buscar por nome ou endereço..." type="text">
+      </div>
+      <div class="flex gap-stack-sm overflow-x-auto hide-scrollbar pb-2" id="filter-chips">
+        <button data-filter="todos" class="filter-chip active flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-full text-label-md whitespace-nowrap active:scale-95 transition-transform">
+          <span class="material-symbols-outlined text-[18px]">health_and_safety</span> Todos
+        </button>
+        <button data-filter="ubs" class="filter-chip flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[18px]">local_hospital</span> UBS
+        </button>
+        <button data-filter="farmacia" class="filter-chip flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[18px]">medical_services</span> Farmácias
+        </button>
+        <button data-filter="hospital" class="filter-chip flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[18px]">emergency</span> Hospitais
+        </button>
+        <button data-filter="caps" class="filter-chip flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[18px]">psychology</span> CAPS
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-container-padding pb-stack-lg">
+    <div class="relative h-[300px] md:h-[400px] w-full rounded-2xl overflow-hidden map-shadow">
+      <div class="absolute inset-0 bg-surface-container-high">
+        <img alt="Mapa de Aracaju" class="w-full h-full object-cover grayscale opacity-50 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl-OiDOESATyzbg0BtvlVCFGEiTJDe6hdcdD8hE8QDMupHKh9B6pGZw2wbl27P3WRSHoCbZWvCqJkU2QhG50rVGeDM2n9eWIAyvegfDHvqArYT6kCqi0h2o3iCNHFdLZSQ5QNW70SBjgy4z600E9N-fgTwaLxTihNF1uFm38SXZyTb2y-r0i0DDFDNFnaUG8VS7bRJkxBdJCSIhnDUQTSkMHtXExpxB1DvbxcCxEJgIdEJs2fvStrSz9K5ewGgiJQLdibhEPn8ukY">
+      </div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full mb-8">
+        <div class="glass-card p-4 rounded-xl shadow-lg border border-primary-fixed-dim/30 w-56">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-label-sm font-label-sm bg-primary-container text-on-primary-container px-2 py-0.5 rounded">UBS Aberta</span>
+            <span class="material-symbols-outlined text-primary text-sm">info</span>
+          </div>
+          <h4 class="font-headline-md text-[16px] text-primary leading-tight">UBS Vila Clementino</h4>
+          <p class="text-label-sm text-on-surface-variant mt-1">450m • 6 min a pé</p>
+        </div>
+        <div class="w-4 h-4 bg-primary rotate-45 mx-auto -mt-2 shadow-md"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-container-padding pb-12">
+    <div class="flex items-center justify-between mb-stack-md">
+      <h3 class="text-headline-md font-headline-md text-primary">Disponibilidade Regional</h3>
+      <span class="text-label-sm text-outline" id="results-count">4 encontradas</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" id="resources-grid">
+
+      <div class="resource-card bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group" data-category="ubs" data-context="urbano">
+        <div class="flex justify-between items-start mb-4">
+          <div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container"><span class="material-symbols-outlined text-3xl">local_hospital</span></div>
+          <span class="text-label-sm font-label-sm text-secondary px-3 py-1 bg-surface-container rounded-full">UBS</span>
+        </div>
+        <h4 class="text-headline-md font-headline-md text-primary group-hover:text-surface-tint transition-colors">UBS Santa Cecília</h4>
+        <div class="flex items-center gap-2 mt-2 text-on-surface-variant"><span class="material-symbols-outlined text-sm">distance</span><span class="text-body-md">1.2 km de distância</span></div>
+        <div class="flex items-center gap-2 mt-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm">schedule</span><span class="text-body-md">Aberto até as 18:00</span></div>
+        <button class="w-full mt-6 h-14 bg-primary text-on-primary rounded-xl font-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all"><span class="material-symbols-outlined">directions</span>Como chegar</button>
+      </div>
+
+      <div class="resource-card bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group" data-category="farmacia" data-context="urbano">
+        <div class="flex justify-between items-start mb-4">
+          <div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed"><span class="material-symbols-outlined text-3xl">medical_services</span></div>
+          <span class="text-label-sm font-label-sm text-tertiary px-3 py-1 bg-surface-container rounded-full">Farmácia SUS</span>
+        </div>
+        <h4 class="text-headline-md font-headline-md text-primary group-hover:text-surface-tint transition-colors">Farmácia Popular Central</h4>
+        <div class="flex items-center gap-2 mt-2 text-on-surface-variant"><span class="material-symbols-outlined text-sm">distance</span><span class="text-body-md">2.4 km de distância</span></div>
+        <div class="flex items-center gap-2 mt-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm">schedule</span><span class="text-body-md">Aberto até as 20:00</span></div>
+        <button class="w-full mt-6 h-14 bg-primary text-on-primary rounded-xl font-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all"><span class="material-symbols-outlined">directions</span>Como chegar</button>
+      </div>
+
+      <div class="resource-card bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group" data-category="hospital" data-context="urbano">
+        <div class="flex justify-between items-start mb-4">
+          <div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container"><span class="material-symbols-outlined text-3xl">emergency</span></div>
+          <span class="text-label-sm font-label-sm text-primary px-3 py-1 bg-surface-container rounded-full">Hospital</span>
+        </div>
+        <h4 class="text-headline-md font-headline-md text-primary group-hover:text-surface-tint transition-colors">Hospital de Urgência de Sergipe - HUSE</h4>
+        <div class="flex items-center gap-2 mt-2 text-on-surface-variant"><span class="material-symbols-outlined text-sm">distance</span><span class="text-body-md">3.8 km de distância</span></div>
+        <div class="flex items-center gap-2 mt-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm">check_circle</span><span class="text-body-md text-secondary">Emergência: 30 min espera</span></div>
+        <button class="w-full mt-6 h-14 bg-primary text-on-primary rounded-xl font-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all"><span class="material-symbols-outlined">directions</span>Como chegar</button>
+      </div>
+
+      <div class="resource-card bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group" data-category="caps" data-context="urbano">
+        <div class="flex justify-between items-start mb-4">
+          <div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container"><span class="material-symbols-outlined text-3xl">psychology</span></div>
+          <span class="text-label-sm font-label-sm text-secondary px-3 py-1 bg-surface-container rounded-full">CAPS</span>
+        </div>
+        <h4 class="text-headline-md font-headline-md text-primary group-hover:text-surface-tint transition-colors">CAPS Cidade Nova</h4>
+        <div class="flex items-center gap-2 mt-2 text-on-surface-variant"><span class="material-symbols-outlined text-sm">distance</span><span class="text-body-md">4.1 km de distância</span></div>
+        <div class="flex items-center gap-2 mt-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm">schedule</span><span class="text-body-md">Aberto até as 17:00</span></div>
+        <button class="w-full mt-6 h-14 bg-primary text-on-primary rounded-xl font-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all"><span class="material-symbols-outlined">directions</span>Como chegar</button>
+      </div>
+
+      <div class="resource-card bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group hidden" data-category="ubs" data-context="rural">
+        <div class="flex justify-between items-start mb-4">
+          <div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container"><span class="material-symbols-outlined text-3xl">local_hospital</span></div>
+          <span class="text-label-sm font-label-sm text-secondary px-3 py-1 bg-surface-container rounded-full">UBS</span>
+        </div>
+        <h4 class="text-headline-md font-headline-md text-primary group-hover:text-surface-tint transition-colors">UBS Povoado Areia Branca</h4>
+        <div class="flex items-center gap-2 mt-2 text-on-surface-variant"><span class="material-symbols-outlined text-sm">distance</span><span class="text-body-md">14.6 km de distância</span></div>
+        <div class="flex items-center gap-2 mt-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm">schedule</span><span class="text-body-md">Aberto até as 16:00</span></div>
+        <button class="w-full mt-6 h-14 bg-primary text-on-primary rounded-xl font-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all"><span class="material-symbols-outlined">directions</span>Como chegar</button>
+      </div>
+
+      <div class="resource-card bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group hidden" data-category="hospital" data-context="rural">
+        <div class="flex justify-between items-start mb-4">
+          <div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container"><span class="material-symbols-outlined text-3xl">emergency</span></div>
+          <span class="text-label-sm font-label-sm text-primary px-3 py-1 bg-surface-container rounded-full">Hospital</span>
+        </div>
+        <h4 class="text-headline-md font-headline-md text-primary group-hover:text-surface-tint transition-colors">Hospital Regional de Itabaiana</h4>
+        <div class="flex items-center gap-2 mt-2 text-on-surface-variant"><span class="material-symbols-outlined text-sm">distance</span><span class="text-body-md">22.3 km de distância</span></div>
+        <div class="flex items-center gap-2 mt-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm">check_circle</span><span class="text-body-md text-secondary">Emergência: 45 min espera</span></div>
+        <button class="w-full mt-6 h-14 bg-primary text-on-primary rounded-xl font-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all"><span class="material-symbols-outlined">directions</span>Como chegar</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="px-container-padding py-stack-lg hidden pb-12" id="itinerante-section">
+    <div class="bg-primary-container text-on-primary-container p-8 rounded-3xl relative overflow-hidden flex flex-col md:flex-row items-center gap-stack-lg">
+      <div class="relative z-10 flex-1">
+        <h3 class="text-headline-lg-mobile font-headline-lg mb-4">Saúde Itinerante no Campo</h3>
+        <p class="text-body-lg opacity-90 mb-6">Identificamos que você possui acesso limitado a unidades fixas. Conheça o calendário das Unidades Móveis de Saúde que visitarão sua região em breve.</p>
+        <button class="px-8 py-3 bg-surface-container-lowest text-primary rounded-full font-label-md shadow-lg hover:bg-inverse-on-surface transition-colors active:scale-95">
+          Ver Cronograma Rural
+        </button>
+      </div>
+      <div class="w-full md:w-64 h-48 rounded-2xl overflow-hidden relative z-10 border-2 border-primary-fixed-dim/30">
+        <img alt="Unidade Móvel de Saúde" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmQNwfhPLwHDpit8mRw7-481wl_RFV4ZaeDeuKsdoBhxumzkCyZPpRER-Ao_Cm_pu624N8ioHjg4K56GuUFYdC94ay1pqPg7dnR-Cjqw8uaWN-MP2QKYOcReMChGEIh1WsHg7pA8qArzYUrGBC5k6gsrRU0nfn16HVX6TnZzuKLrcSR_aCFqCl54buY82QnpFqfyH5HZ2JQt8HBLx2fsallUGk8_TzZSIq3kzjINa5YeUL1nc9Oazv2imKnuEgqKMYMLiRWBLtYNk">
+      </div>
+      <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-primary-fixed-dim/20 rounded-full blur-3xl"></div>
+      <div class="absolute -left-16 -top-16 w-48 h-48 bg-secondary-fixed/20 rounded-full blur-3xl"></div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER PADRÃO -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center px-2 pb-safe h-16 bg-surface-container-lowest border-t border-outline-variant shadow-lg rounded-t-xl">
+  <button data-nav="home" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined">home</span><span class="font-label-sm text-[10px]">Início</span>
+  </button>
+  <button data-nav="meds" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined">pill</span><span class="font-label-sm text-[10px]">Remédios</span>
+  </button>
+  <button data-nav="scan" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined">document_scanner</span><span class="font-label-sm text-[10px]">Escanear</span>
+  </button>
+  <button data-nav="alerts" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined">notifications</span><span class="font-label-sm text-[10px]">Alertas</span>
+  </button>
+  <button data-nav="history" class="nav-item flex flex-1 flex-col items-center justify-center text-on-surface-variant py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined">history_edu</span><span class="font-label-sm text-[10px]">Histórico</span>
+  </button>
+  <!-- Mapa ativo nesta tela -->
+  <button data-nav="map" class="nav-item nav-active flex flex-1 flex-col items-center justify-center py-1 rounded-lg transition-all active:scale-90">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">distance</span><span class="font-label-sm text-[10px]">Mapa</span>
+  </button>
+</nav>
+
+<script>
+const contextoAtual = document.getElementById('contexto-atual');
+const qtdUnidades = document.getElementById('qtd-unidades');
+const itineranteSection = document.getElementById('itinerante-section');
+const filterChips = document.querySelectorAll('.filter-chip');
+const cards = document.querySelectorAll('.resource-card');
+const countEl = document.getElementById('results-count');
+
+let currentContext = 'urbano';
+let currentFilter = 'todos';
+
+function applyFilters() {
+  let visible = 0;
+  cards.forEach(card => {
+    const contextOk = card.dataset.context === currentContext;
+    const filterOk = currentFilter === 'todos' || card.dataset.category === currentFilter;
+    const show = contextOk && filterOk;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  countEl.textContent = `${visible} encontrada${visible !== 1 ? 's' : ''}`;
+  qtdUnidades.textContent = Array.from(cards).filter(c => c.dataset.context === currentContext).length;
+}
+
+document.querySelectorAll('.context-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.context-btn').forEach(b => {
+      b.classList.remove('active-pill');
+      b.classList.add('text-on-surface-variant');
+    });
+    btn.classList.add('active-pill');
+    btn.classList.remove('text-on-surface-variant');
+    currentContext = btn.dataset.context;
+    contextoAtual.textContent = currentContext === 'urbano' ? 'Urbano' : 'Rural';
+    itineranteSection.classList.toggle('hidden', currentContext !== 'rural');
+    applyFilters();
+  });
+});
+
+filterChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    filterChips.forEach(c => {
+      c.classList.remove('bg-primary', 'text-on-primary');
+      c.classList.add('bg-surface-container-lowest', 'border', 'border-outline-variant', 'text-on-surface-variant');
+    });
+    chip.classList.add('bg-primary', 'text-on-primary');
+    chip.classList.remove('bg-surface-container-lowest', 'border', 'border-outline-variant', 'text-on-surface-variant');
+    currentFilter = chip.dataset.filter;
+    applyFilters();
+  });
+});
+
+applyFilters();
+
+/* ===== SCRIPT DE NAVEGAÇÃO PADRÃO ===== */
+const navLinks = { 
+    home: 'tela11.html',
+    meds: 'tela4.html',
+    scan: 'tela6.html', 
+    alerts: 'tela7.html',
+    history: 'tela10.html', 
+    map: 'tela9.html' 
+};
+
+document.querySelectorAll('.nav-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(b => {
+            b.classList.remove('nav-active');
+            b.classList.add('text-on-surface-variant');
+        });
+        btn.classList.add('nav-active');
+        btn.classList.remove('text-on-surface-variant');
+        
+        const target = navLinks[btn.dataset.nav];
+        if (target) window.location.href = target;
+    });
+});
+</script>
+</body></html>
